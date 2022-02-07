@@ -49,6 +49,7 @@
 
            .form-controller label, .form-controller input{
                display: block;
+               color: rgb(218, 167, 40);
            }
 
            .form-controller input{
@@ -60,8 +61,10 @@
 
            button{
                color:  rgb(218, 167, 40);
-               border: 1px solid #ccc;
+               border: 1px solid rgb(218, 167, 40);
                border-radius: 3px;
+               height: 35px;
+               background-color: #ffff;
            }
 
            .form-controller{
@@ -80,12 +83,13 @@
            }
 
            .productheader{
-            color: rgb(218, 167, 40);;
+            color: rgb(218, 167, 40);
             margin: auto;
-            width: 50rem;
+            text-align: center;
             max-width: 90%;
            }
 
+           
     </style>
 </head>
 <body>
@@ -98,7 +102,7 @@
         </nav>
        
     </header>
-    <h1 class="productheader">Prodcut inventory</h1>
+    <h1 class="productheader">PRODUCT INVENTORY</h1>
     <form class="product-form" action="/addproduct" method="Post">
         <div class="form-controller">
             <label for="pname">Product Name</label>
