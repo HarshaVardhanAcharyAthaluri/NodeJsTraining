@@ -1,5 +1,7 @@
 # NodeJsTraining
 
+# SQL Commands
+
 * create database nodetraining;
 * show databases;
 * use nodetraining;
