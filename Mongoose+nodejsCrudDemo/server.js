@@ -18,39 +18,40 @@ app.get('/productlist',(req,res)=>{
     let productlist = [];
     productModel.find().then(prods=>{
         productlist = prods;
-        pid = prods[(prods.length-1)].id;
-        console.log(productlist);
         res.render('product',{'productlist':productlist});
     })
     .catch(err=>console.log(err));
 });
 
-
+let pid = 0;
 app.post('/addproduct',(req,res)=>{
+    
+    productModel.findOne().sort({ field: 'asc', _id: -1 }).limit(1)
+    .exec()
+    .then(pr=>{
 
-  productModel.find().then(
-      prods => {
-          let pid = 0;
         const product = new productModel({
-            "id": pid,
+            "id": pr.id+1,
             "Product_Name":req.body.pname,
             "Product_Quantity":req.body.qty,
             "Product_Status":req.body.pstatus
         });
-        console.log(prods);
-          pid = prods[(prods.length-1)].id;
-          console.log(pid)
-          product.save()
+
+        product.save()
           .then(reslut=>{
               res.redirect('/productlist');
           }).catch(err=>{
               res.send(err);
           });
-      });
+
+    });
+
+        
+
 });
 
 app.post('/deleteproduct',(req,res)=>{
-    productModel.findOneAndRemove(req.body.id).then(()=>{
+    productModel.find({ id:req.body.id}).remove(()=>{
         res.redirect('/productlist');
     }).catch(err=>console.log(err));
 });
@@ -60,14 +61,13 @@ app.get('/updateform',(req,res)=>{
 });
 
 app.post('/updateproduct',(req,res)=>{
-    productModel.findByIdAndUpdate(req.body.id)
+    productModel.findOne({ id:req.body.id})
     .then(product=>{
-        console.log(product);
+        console.log(req.body.pname);
         product.Product_Name=req.body.prodname?req.body.prodname:product.Product_Name,
         product.Product_Quantity =  req.body.prdoqty?req.body.prdoqty:product.Product_Quantity,
         product.Product_Status = req.body.prodstatus?req.body.prodstatus:product.Product_Status
-        return product.save();
-    }).then(result=>{
+        product.save();
         res.redirect('/productlist');
     }).catch(err=>console.log(err));
 });
@@ -78,7 +78,6 @@ res.sendFile(__dirname+'/404.html')
 });
 
 mongoose.connect('mongodb://localhost:27017/nodetraining').then(con=>{
-    console.log(con);
     app.listen(3000,()=>console.log('server Started 3000'));
 }).catch(err=>console.log(err));
 
