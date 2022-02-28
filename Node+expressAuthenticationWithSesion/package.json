@@ -1,0 +1,24 @@
+{
+  "name": "productinventory",
+  "version": "1.0.0",
+  "description": "As a Admin I will Creta/Delete/Update Product Details",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.0.10",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "mongodb": "^4.4.0",
+    "mongoose": "^6.2.3",
+    "mysql2": "^2.3.3",
+    "popups": "^1.1.3",
+    "pug": "^3.0.2",
+    "sequelize": "^6.16.1"
+  }
+}
