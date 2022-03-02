@@ -1,0 +1,78 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "title":"Product Inventory API",
+        "version":"1.0.0",
+        "description":"THE API WHICH WIll PERFORM PRODUCT CRUD OPERATIONS"
+    },
+    "host":"localhost:3000",
+    "paths":{
+        "/productlist":{
+            "get":{
+                "summary":"get all prodcuts",
+                "description":"get or list of prodcuts",
+                "produces":["application/json"],
+                "parametrers":[],
+                "responses":{
+                    "200":{
+                        "description": "success"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        },
+        "/addproduct":{
+            "post":{
+                "summary":"Create prodcuts",
+                "description":"add prodcuts",
+                "produces":["application/json"],
+                "parametrers":[],
+                "responses":{
+                    "200":{
+                        "description": "success"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        },
+        "/deleteproduct":{
+            "delete":{
+                "summary":"delete prodcut based on Id",
+                "description":"delete prodcuts",
+                "produces":["application/json"],
+                "parametrers":["productid"],
+                "responses":{
+                    "200":{
+                        "description": "success"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        },
+        "/updateproduct":{
+            "put":{
+                "summary":"update prodcut based on Id",
+                "description":"update prodcuts",
+                "produces":["application/json"],
+                "parametrers":["productid"],
+                "responses":{
+                    "200":{
+                        "description": "success"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        }
+
+    }
+
+
+}
